@@ -1,32 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/provider/todoprovider.dart';
-
-import 'screens/homescreen.dart';
-
-
+import 'package:todo_list_app/provider/todo_provider.dart';
+import 'package:todo_list_app/screen/home_screen.dart';
 void main() {
-  runApp(const TodoHome());
+  runApp(const MyApp());
 }
-
-class TodoHome extends StatefulWidget {
-  const TodoHome({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
-  State<TodoHome> createState() => _TodoHomeState();
+  State<MyApp> createState() => _MyAppState();
 }
 
-class _TodoHomeState extends State<TodoHome> {
+class _MyAppState extends State<MyApp> {
+  
   @override
   Widget build(BuildContext context) {
-   
     return ChangeNotifierProvider(
-      create: (context) {
-       return ProviderTodo();
-      },
-      child: const MaterialApp(
+      create: (context)=>NotesProviders(),
+      child:const  MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: TodoHomeScreen(),
+        home:  HomeScreen()
       ),
     );
   }
